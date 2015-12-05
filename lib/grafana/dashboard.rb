@@ -54,7 +54,6 @@ module Grafana
       end
     end 
 
-
     def create_dashboard(properties={})
 
       @logger.info("Creating dashboard: #{properties['title']} (POST /api/dashboards/db)") if @debug
@@ -78,6 +77,83 @@ module Grafana
       end
     end
 
+    def delete_dashboard(name)
+      name = self.create_slug(name)
+      endpoint = "/api/dashboards/db/#{name}"
+      @logger.info("Deleting dahsboard ID #{id} (DELETE #{endpoint})") if @debug
+      begin
+        resp = @api_instance[endpoint].delete(@headers)
+        if resp.code.to_i == 200
+          @logger.info("Dashboard ID #{id} has been deleted") if @debug
+          return true
+        else
+          @logger.error("Could note delete dashboard: #{resp.body}") if @debug
+          return false
+        end
+      rescue => e
+       @logger.error("Could not delete dashboard: #{e}") if @debug
+       return false
+      end
+    end
+
+    def get_home_dashboard()
+      endpoint = "/api/dashboards/home"
+      begin 
+        @logger.info("Attempting to get home dashboard (GET #{endpoint})") if @debug
+        resp = @api_instance[endpoint].get(@headers)
+
+        if resp.code.to_i == 200
+          return JSON.parse(resp.body)
+        else
+          @logger.error("Could not retreive home dashboard (HTTP #{resp.code}: #{resp.body})") if @debug
+          return false
+        end
+      rescue => e
+        @logger.error("Error getting home dashboard: #{e}") if @debug
+        return false
+      end
+    end
+
+
+    def get_dashboard_tags()
+      endpoint = "/api/dashboards/tags"
+      begin 
+        @logger.info("Attempting to get dashboard tags(GET #{endpoint})") if @debug
+        resp = @api_instance[endpoint].get(@headers)
+
+        if resp.code.to_i == 200
+          return JSON.parse(resp.body)
+        else
+          @logger.error("Could not retreive dashboard tags (HTTP #{resp.code}: #{resp.body})") if @debug
+          return false
+        end
+      rescue => e
+        @logger.error("Error getting dashboard tags: #{e}") if @debug
+        return false
+      end
+    end
+
+    def search_dashboards(params={})
+
+      params['query'] = (params['query'].length >= 1 ? CGI::escape(params['query']) : '' )
+      params['starred'] = (params['starred'] ? 'true' : 'false')
+
+      endpoint = "/api/search/?query=#{params['query']}&starred=#{params['starred']}&tag=#{params['tags']}"
+      begin 
+        @logger.info("Attempting to search for dashboards (GET #{endpoint})") if @debug
+        resp = @api_instance[endpoint].get(@headers)
+
+        if resp.code.to_i == 200
+          return JSON.parse(resp.body)
+        else
+          @logger.error("Could not search for dashboard (HTTP #{resp.code}: #{resp.body})") if @debug
+          return false
+        end
+      rescue => e
+        @logger.error("Error search for dashboard: #{e}") if @debug
+        return false
+      end
+    end
 
   end
 

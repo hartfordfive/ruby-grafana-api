@@ -92,9 +92,20 @@ g.create_data_source(
 )
 ```
 
+##### Get available data source types: 
+```ruby
+g.get_available_data_source_types()
+```
+
+
 ### Dashboard Methods
 ---
 The following methods are all relating to dashboards
+
+##### Get a dashboard:
+```ruby
+g.get_dashboard('Main Dashboard') # converted to 'main-dashboard' automatically
+```
 
 ##### Creating a dashboard: 
 ```ruby
@@ -135,6 +146,50 @@ g.create_dashboard({
     }
   ]
 })
+```
+
+##### Get the CloudWatch namespaces for a given CloudWatch data source id:
+```ruby
+g.get_cw_namespaces(23)
+```
+
+##### Delete a dashboard:
+```ruby
+g.delete_dashboard('Main Dashboard')
+```
+
+##### Get the home dashboard:
+```ruby
+g.get_home_dashboard()
+```
+
+##### Get dashboard tags:
+```ruby
+g.get_dashboard_tags()
+```
+
+##### Search for dashboard:
+```ruby
+g.search_dashboards({"query" => "My Dashboard", "tags" => 'test'})
+```
+
+
+### Snapshot Methods
+---
+
+##### Create snapshot: (TODO)
+```ruby
+g.create_snapshot()
+```
+
+##### Get snapshot: (TODO)
+```ruby
+g.get_snapshot()
+```
+
+##### Delete snapshot: (TODO)
+```ruby
+g.delete_snapshot()
 ```
 
 

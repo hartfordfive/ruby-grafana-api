@@ -103,6 +103,24 @@ module Grafana
       end
     end
 
+    def get_available_data_source_types()
+      endpoint = '/api/datasources/plugins'
+      begin 
+        @logger.info("Attempting to get existing data source types (GET #{endpoint})") if @debug
+        resp = @api_instance[endpoint].get(@headers)
+        types = JSON.parse(resp.body)
+        if resp.code.to_i == 200
+          return types
+        else
+          @logger.error("Could not retreive data sources types (HTTP #{resp.code}: #{resp.body})") if @debug
+          return false
+        end
+      rescue => e
+        @logger.error("Error getting existing data source types: #{e}") if @debug
+        return false
+      end
+    end
+
   end
 
 end
