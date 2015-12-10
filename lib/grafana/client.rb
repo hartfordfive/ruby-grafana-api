@@ -5,22 +5,34 @@ require 'logger'
 
 module Grafana
 
+  require_relative 'version'
+  require_relative 'http_request'
   require_relative 'user'
+  require_relative 'users'
   require_relative 'datasource'
   require_relative 'organization'
+  require_relative 'organizations'
   require_relative 'dashboard'
   require_relative 'dashboard_template'
-  require_relative 'version'
+  require_relative 'snapshot'
+  require_relative 'frontend'
+  require_relative 'login'
 
   class Client
 
     attr_reader :debug, :session_cookies, :headers, :logger, :api_instance
 
+    include Grafana::HttpRequest
     include Grafana::User
+    include Grafana::Users
     include Grafana::Datasource
     include Grafana::Organization
+    include Grafana::Organizations
     include Grafana::Dashboard
     include Grafana::DashboardTemplate
+    include Grafana::Snapshot
+    include Grafana::Frontend
+    include Grafana::Login
 
     def initialize(host="localhost", port=3000, user='admin', pass='', settings={})
 

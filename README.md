@@ -79,6 +79,11 @@ The following methods are all relating to data sources
 g.get_data_sources()
 ```
 
+##### Get the CloudWatch namespaces for a given CloudWatch data source id:
+```ruby
+g.get_cw_namespaces(23)
+```
+
 ##### Create a data source: 
 ```ruby
 g.create_data_source(
@@ -146,11 +151,6 @@ g.create_dashboard({
     }
   ]
 })
-```
-
-##### Get the CloudWatch namespaces for a given CloudWatch data source id:
-```ruby
-g.get_cw_namespaces(23)
 ```
 
 ##### Delete a dashboard:
