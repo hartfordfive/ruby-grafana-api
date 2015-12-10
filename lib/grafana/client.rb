@@ -17,6 +17,7 @@ module Grafana
   require_relative 'snapshot'
   require_relative 'frontend'
   require_relative 'login'
+  require_relative 'admin'
 
   class Client
 
@@ -33,6 +34,7 @@ module Grafana
     include Grafana::Snapshot
     include Grafana::Frontend
     include Grafana::Login
+    include Grafana::Admin
 
     def initialize(host="localhost", port=3000, user='admin', pass='', settings={})
 
