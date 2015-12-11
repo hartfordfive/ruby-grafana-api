@@ -10,7 +10,7 @@ require 'grafana'
 
 ## Comments/Notes
 
-This project is still in its infancy stages therefore only a small portion of the overall Grafana HTTP API methods have been implemented. If you come across a bug or if you have a request for a new feature, please open an issue.
+If you come across a bug or if you have a request for a new feature, please open an issue.
 
 
 ## Methods & Usage Examples
@@ -25,7 +25,7 @@ g = Grafana::Client.new('[GRAFANA_HOST]', [GRAFANA_PORT], '[GRAFANA_USER]', '[GR
 
 * [Admin](docs/ADMIN.md) 
 * [Dashboard](docs/DASHBOARD.md) 
-* [Datasource](docs/DATASOURCe.md) 
+* [Datasource](docs/DATASOURCE.md) 
 * [Frontend](docs/FRONTEND.md) 
 * [Login](docs/LOGIN.md) 
 * [Organization](docs/ORGANIZATION.md) 
