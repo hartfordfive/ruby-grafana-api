@@ -5,7 +5,7 @@ module Grafana
 
     def get_current_user()
       endpoint = "/api/user"
-      @logger.info("Getting user ID #{id} (GET #{endpoint})") if @debug
+      @logger.info("Getting user current user (GET #{endpoint})") if @debug
       return get_request(endpoint)
     end
 

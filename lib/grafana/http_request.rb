@@ -3,28 +3,32 @@ module Grafana
   module HttpRequest
 
     def get_request(endpoint)
+      @logger.info("Running: Grafana::HttpRequest::#{__method__} on #{endpoint}") if @debug
       return _issue_request('GET', endpoint)
     end
 
     def post_request(endpoint, postdata={})
+      @logger.info("Running: Grafana::HttpRequest::#{__method__} on #{endpoint}") if @debug
       return _issue_request('POST', endpoint, postdata)
     end
 
     def put_request(endpoint, putdata={})
+      @logger.info("Running: Grafana::HttpRequest::#{__method__} on #{endpoint}") if @debug
       return _issue_request('PUT', endpoint, putdata)
     end
 
     def delete_request(endpoint)
+      @logger.info("Running: Grafana::HttpRequest::#{__method__} on #{endpoint}") if @debug
       return _issue_request('DELETE', endpoint)
     end
 
     def patch_request(endpoint, patchdata={})
+      @logger.info("Running: Grafana::HttpRequest::#{__method__} on #{endpoint}") if @debug
       return _issue_request('PATCH', endpoint, patchdata)
     end
 
     def _issue_request(method_type='GET', endpoint='/', data={})
   
-      @logger.info("Running: Grafana::HttpRequest::#{__method__} on #{endpoint}") if @debug
       begin
         resp = nil
         case method_type.upcase

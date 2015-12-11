@@ -1,2 +1,2 @@
 
-require_relative 'grafana/client.rb'
+require 'grafana/client.rb'
