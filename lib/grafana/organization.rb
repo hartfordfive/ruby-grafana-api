@@ -21,10 +21,10 @@ module Grafana
       return get_request(endpoint)
     end
 
-    def add_user_to_current_org()
+    def add_user_to_current_org(properties={})
       endpoint = "/api/org/users"
       @logger.info("Adding user to current organization (POST #{endpoint})") if @debug
-      return post_request(endpoint)
+      return post_request(endpoint, properties)
     end
 
 

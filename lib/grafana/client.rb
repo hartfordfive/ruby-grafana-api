@@ -35,6 +35,7 @@ module Grafana
     include Grafana::Frontend
     include Grafana::Login
     include Grafana::Admin
+    include Grafana::Version
 
     def initialize(host="localhost", port=3000, user='admin', pass='', settings={})
 

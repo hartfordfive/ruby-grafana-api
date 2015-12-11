@@ -39,12 +39,6 @@ module Grafana
       return delete_request(endpoint)
     end
 
-    def ping_session()
-      endpoint = "/api/login/ping"
-      @logger.info("Pingning current session (GET /api/login/ping)") if @debug
-      return get_request(endpoint)
-    end
-
   end
 
 end

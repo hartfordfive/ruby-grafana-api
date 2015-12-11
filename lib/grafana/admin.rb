@@ -41,13 +41,13 @@ module Grafana
       end
     end
 
-    def delete_user(id)
-      if id == 1
-        @logger.warn("Can't delete user ID #{id} (admin user)") if @debug
+    def delete_user(user_id)
+      if user_id == 1
+        @logger.warn("Can't delete user ID #{user_id} (admin user)") if @debug
         return false
       end
-      endpoint = "/api/admin/users/#{id}"
-      @logger.info("Deleting user ID #{id} (DELETE #{endpoint})") if @debug
+      endpoint = "/api/admin/users/#{user_id}"
+      @logger.info("Deleting user ID #{user_id} (DELETE #{endpoint})") if @debug
       return delete_request(endpoint)
     end
 
@@ -58,23 +58,12 @@ module Grafana
       return post_request(endpoint, properties.to_json)
     end
 
-    def update_user_pass(user_id)
-      endpoint = " /api/admin/users/#{user_id}/password"
+    def update_user_pass(user_id,password)
+      endpoint = " /api/admin/users/#{user_id}/#{password}"
       @logger.info("Updating password for user ID #{user_id} (PUT #{endpoint})") if @debug
       return put_request(endpoint,properties)
     end
 
-    def update_user_permissions(properties={})
-      endpoint = " /api/admin/users/#{user_id}/permissions"
-      @logger.info("Updating permissions for user ID #{user_id} (PUT #{endpoint})") if @debug
-      return put_request(endpoint,properties)
-    end
-
-    def delete_user(user_id)
-      endpoint = "/api/admin/users/#{user_id}"
-      @logger.info("Deleting user ID #{user_id} (DELETE #{endpoint})") if @debug
-      return delete_request(endpoint)
-    end
 
   end
 
