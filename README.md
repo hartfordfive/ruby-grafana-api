@@ -2,11 +2,38 @@
 
 ## Description
 
-A simple Ruby wrapper for the [Grafana](http://docs.grafana.org/reference/http_api/)  HTTP API
+A simple Ruby wrapper for the [Grafana](http://docs.grafana.org/reference/http_api/)  HTTP API.  To include in your project, simply require the grafana library:
+
+```ruby
+require 'grafana'
+```
+
+## Comments/Notes
+
+If you come across a bug or if you have a request for a new feature, please open an issue.
+
 
 ## Methods & Usage Examples
 
-Please note this is a first basic version where only a small portion of the overall methods have been implemented.  More development will come in the near future.
+#### Creating an instance of the grafana api client: 
+```ruby
+options = {"debug" => false, "timeout" => 3, "ssl" => false}
+g = Grafana::Client.new('[GRAFANA_HOST]', [GRAFANA_PORT], '[GRAFANA_USER]', '[GRAFANA_PASS]', options)
+```
+
+#### Individual Module Documentation
+
+* [Admin](docs/ADMIN.md) 
+* [Dashboard](docs/DASHBOARD.md) 
+* [Datasource](docs/DATASOURCE.md) 
+* [Frontend](docs/FRONTEND.md) 
+* [Login](docs/LOGIN.md) 
+* [Organization](docs/ORGANIZATION.md) 
+* [Organizations](docs/ORGANIZATIONS.md) 
+* [Snapshot](docs/SNAPSHOT.md) 
+* [User](docs/USER.md) 
+* [Users](docs/USERS.md) 
+
 
 ## License
 
