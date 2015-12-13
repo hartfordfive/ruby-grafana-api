@@ -1,5 +1,7 @@
 # ruby-grafana-api
 
+[![Gem Version](https://badge.fury.io/rb/grafana-api.svg)](https://badge.fury.io/rb/grafana-api)
+
 ## Description
 
 A simple Ruby wrapper for the [Grafana](http://docs.grafana.org/reference/http_api/)  HTTP API.  To include in your project, simply require the grafana library:
