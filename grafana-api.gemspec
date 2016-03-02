@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'grafana-api'
-  s.version     = '0.1.0'
+  s.version     = '0.1.1'
   s.date        = '2015-12-11'
   s.summary     = "Grafana HTTP API Wrapper"
   s.description = "A simple wrapper for the Grafana HTTP API"
