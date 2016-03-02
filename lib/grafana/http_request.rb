@@ -35,13 +35,13 @@ module Grafana
         when 'GET'
           resp = @api_instance[endpoint].get(@headers)
         when 'POST'
-          resp = @api_instance[endpoint].patch(data,@headers)
+          resp = @api_instance[endpoint].post(data,@headers)
         when 'PATCH'
           resp = @api_instance[endpoint].patch(data,@headers)
         when 'PUT'
-          resp = @api_instance[endpoint].patch(data,@headers)
+          resp = @api_instance[endpoint].put(data,@headers)
         when 'DELETE'
-          resp = @api_instance[endpoint].patch(@headers)
+          resp = @api_instance[endpoint].delete(@headers)
         else
           @logger.error("Error: #{__method__} is not a valid request method.") if @debug
           return false
