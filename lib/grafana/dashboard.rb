@@ -15,8 +15,8 @@ module Grafana
     end
 
     def get_dashboard(name='')
-      endpoint = "/api/dashboards/db/#{name}"
       name = self.create_slug(name)
+      endpoint = "/api/dashboards/db/#{name}"
       @logger.info("Attempting to get dashboard (GET /api/dashboards/db/#{name})") if @debug
       return get_request(endpoint)
     end
@@ -30,6 +30,9 @@ module Grafana
 
     def delete_dashboard(name)
       name = self.create_slug(name)
+      data = self.get_dashboard( name )
+      id   = data['dashboard']['id'] ? data['dashboard']['id'] : nil
+
       endpoint = "/api/dashboards/db/#{name}"
       @logger.info("Deleting dahsboard ID #{id} (DELETE #{endpoint})") if @debug
       return delete_request(endpoint)
