@@ -17,7 +17,7 @@ module Grafana
 
     def switch_current_user_org(org_id)
       endpoint = "/api/user/using/#{org_id}"
-      @logger.info("Switching current user to Org ID #{id} (GET #{endpoint})") if @debug
+      @logger.info("Switching current user to Org ID #{org_id} (GET #{endpoint})") if @debug
       return post_request(endpoint, {})
     end
 
