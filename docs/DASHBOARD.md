@@ -10,6 +10,11 @@ The following methods are all relating to dashboards
 g.get_dashboard('Main Dashboard') # converted to 'main-dashboard' automatically
 ```
 
+##### Get a dashboard list:
+```ruby
+g.get_dashboard_list() # No parameter is required
+```
+
 ##### Creating a dashboard: 
 ```ruby
 g.create_dashboard({

@@ -1,9 +1,9 @@
-
 module Grafana
 
   module Dashboard
 
     def create_slug(text)
+      text.gsub!(/[()]/, "")
       if text =~ /\s/
         if text =~ /-/
           text = text.gsub(/\s+/, "").downcase
@@ -12,6 +12,12 @@ module Grafana
         end
       end
       return text
+    end
+
+    def get_dashboard_list()
+      endpoint = "/api/search"
+      @logger.info("Attempting to get dashboard list (GET /api/search)") if @debug
+      return get_request(endpoint)
     end
 
     def get_dashboard(name='')

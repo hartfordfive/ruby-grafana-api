@@ -19,9 +19,27 @@ If you come across a bug or if you have a request for a new feature, please open
 
 #### Creating an instance of the grafana api client: 
 ```ruby
-options = {"debug" => false, "timeout" => 3, "ssl" => false}
+options = {
+  "debug" => false,
+  "timeout" => 3,
+  "ssl" => false
+}
 g = Grafana::Client.new('[GRAFANA_HOST]', [GRAFANA_PORT], '[GRAFANA_USER]', '[GRAFANA_PASS]', options)
 ```
+
+#### Connecting to Grafana using an API key:
+```ruby
+options = {
+  "debug" => false,
+  "timeout" => 3,
+  "ssl" => false,
+  "headers" => {
+    "Authorization" => "Bearer eiJrIjoidTBsQWpicGR0SzFXD29aclExTjk1cVliMWREUVp0alAiLCJuIjoiR8JhZGFzaG3yFiwiawQIOjE2"
+  }
+}
+g = Grafana::Client.new('[GRAFANA_HOST]', [GRAFANA_PORT], nil, nil, options)
+```
+*user and pass attributes are ignored when specifying Authorization header*
 
 #### Individual Module Documentation
 

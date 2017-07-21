@@ -42,7 +42,7 @@ module Grafana
 
     def get_user_orgs(userid)
       endpoint = "/api/users/#{userid}/orgs"
-      @logger.info("Getting organizations for user #{id} (GET #{endpoint})") if @debug
+      @logger.info("Getting organizations for user #{userid} (GET #{endpoint})") if @debug
       return get_request(endpoint)
     end
 
